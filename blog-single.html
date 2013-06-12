@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Alveera :: Single Page Responsive Template</title>
+    <!-- Main Style Sheet -->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    
+    <!-- Favicons -->
+	<link rel="shortcut icon" href="images/icons/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icons/apple-touch-icon-114x114.png" />
+    
+    
+    
+    <!-- JQuery Plugin -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type='text/javascript' src='js/jquery.easing.1.3.js'></script>
+    <script type="text/javascript" src="js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="js/jquery.visualNav.min.js"></script>   
+    <script type="text/javascript" src="js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="js/responsiveslides.min.js"></script>    
+    <script type="text/javascript" src="js/jquery.scrollTo-min.js"></script>    
+    <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="js/mosaic-min.js"></script>
+    <script type="text/javascript" src="js/jquery.tweet.js"></script>
+    <script type="text/javascript" src="js/modernizr.js"></script>
+    <script type="text/javascript" src="js/isotope.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    
+    <!-- JQuery Custom Plugin -->
+    <script src="js/custom.js"></script>
+    <script type="text/javascript">
+		$(window).load(function() {
+			$('#ef-loader-overlay').fadeOut(800);
+		});
+		$(document).ready(function () {			
+			var $container = $('#content');
+			$container.isotope({
+				filter: '*',
+				animationOptions: {
+					duration: 750,
+					easing: 'linear',
+					queue: false,
+				}
+			});
+			$('#portolfio-filter a').click(function () {
+				$('#portolfio-filter a').removeClass('active');
+				$(this).addClass('active');
+				return false;
+			});
+			$('#portolfio-filter a').click(function () {
+				var selector = $(this).attr('data-filter');
+				$container.isotope({
+					filter: selector,
+					animationOptions: {
+						duration: 750,
+						easing: 'linear',
+						queue: false,
+		
+					}
+				});
+				return false;
+			});
+		});
+	</script>
+    <!--[if lt IE 9]>
+        <script src="../../html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+	<div id="ef-loader-overlay"></div>
+    <!--Header Start-->
+    <header>
+        <div class="container">
+        	<div class="row">
+                <div class="span3">
+                    <div id="logo">
+                    	<a href="#"><img src="images/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="span9 pos-relative">
+                    <nav id="sidemenu">
+                        <ul id="nav">
+                            <li><a href="index.html#home">Home</a></li>
+                            <li><a href="index.html#about">About Us</a></li>                                
+                            <li><a href="index.html#services">Services</a></li>
+                            <li><a href="index.html#works">Portfolio</a></li>
+                            <li><a href="index.html#blog">Blog</a></li>
+                            <li><a href="index.html#contact">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Header End-->
+    
+    <!--Blog Content-->
+    <div class="content" id="blog">
+        <div class="container">
+        	<div class="row">
+            	<div class="page-space">
+            		<div class="span12">
+                		<h1 class="heading"><span>Our Blog</span></h1>
+                    	<h2 class="subheading"><span>Subheading Goes Here</span></h2>                    
+                    </div>
+                    
+                    <div class="span8">
+                    	<div class="blog-outer">
+                            <div class="date-wrap">
+                                23 <span>Jan 2013</span>
+                            </div>
+                            <div class="blog-wrap-outer">
+                                <div class="blog-wrap">
+                                    <h3><a href="blog-single.html">Post With Image</a></h3>
+                                    <a href="blog-single.html"><img src="images/slider_img1.jpg" alt=""/></a>
+                                </div>
+                                <div class="blog-txt">
+                                    <p class="blog-author">By <a href="#">Author</a> - <a href="#">15</a> Comments</p>
+                                    <p>Morbi vitae neque lectus, a venenatis felis. Curabitur id lacus at justo iaculis lacinia. Vestibulum nec odio leo. Pellentesque malesuada ullamcorper tellus pulvinar congue. Aenean sit amet turpis turpis, sit amet pellentesque augue.</p>
+									<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+									<p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comments-wrap">
+                        	<div class="sub-head">
+                                <span>3 Comments</span>
+                            </div>
+                            <div class="comment-box first">
+                                <div class="comment-thumb"><img alt="" src="images/user_thumb.png"></div>
+                                <div class="comment-txt">
+                                    <div class="arrow-right"><img alt="" src="images/arrow_right.png"></div>
+                                    <h4>Ubuntu  <span class="reply-btn"><a href="#">reply</a></span></h4>
+                                    <div class="post-date">March 19, 2012</div>
+                                    <p>Aliquam adipiscing tincidunt lectus, eget adipiscing magna auctor eu. Quisque rhoncus sollicitudin massa non tempor. Cras sit amet mi ut erat rhoncus adipiscing at vel augue.</p>
+                                </div>
+                            </div>
+                        
+                            <div class="comment-box comment-reply">
+                                <div class="comment-thumb"><img alt="" src="images/user_thumb.png"></div>
+                                <div class="comment-txt">
+                                    <div class="arrow-right"><img alt="" src="images/arrow_right.png"></div>
+                                    <h4>Ubuntu  <span class="reply-btn"><a href="#">reply</a></span></h4>
+                                    <div class="post-date">March 19, 2012</div>
+                                    <p>Aliquam adipiscing tincidunt lectus, eget adipiscing magna auctor eu. Quisque rhoncus sollicitudin massa non tempor. Cras sit amet mi ut erat rhoncus adipiscing at vel augue.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="comment-box">
+                                <div class="comment-thumb"><img alt="" src="images/user_thumb.png"></div>
+                                <div class="comment-txt">
+                                    <div class="arrow-right"><img alt="" src="images/arrow_right.png"></div>
+                                    <h4>Ubuntu  <span class="reply-btn"><a href="#">reply</a></span></h4>
+                                    <div class="post-date">March 19, 2012</div>
+                                    <p>Aliquam adipiscing tincidunt lectus, eget adipiscing magna auctor eu. Quisque rhoncus sollicitudin massa non tempor. Cras sit amet mi ut erat rhoncus adipiscing at vel augue.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comments-wrap">
+                        	<div class="sub-head">
+                                <span>Leave A Comment</span>
+                            </div>
+                            <div class="show-grid row">
+                                <div class="span8">
+                                    <div id="sucessmessage"> </div>
+                                </div>
+                                <form id="contact_form" method="post" action="#" >
+                                    <div class="span4">
+                                        <input type="text" class="span4" id="name" name="name" placeholder="First Name...">
+                                    </div>
+                                    <div class="span4">
+                                        <input type="text" class="span4" id="lastname" name="lastname" placeholder="Last Name...">
+                                    </div>
+                                    <div class="span4">
+                                        <input type="text" class="span4" id="email" placeholder="Email..." name="email">
+                                    </div>
+                                    <div class="span4">
+                                        <input type="text" class="span4" id="phone" placeholder="Phone Number..." name="phone">
+                                    </div>
+                                    <div class="span8">
+                                        <textarea class="span8" id="comment" placeholder="Your comments..." name="comment"></textarea>
+                                    </div>
+                                    <div class="span8">
+                                        <div>&nbsp;</div>
+                                        <input type="submit" value="Submit" class="btn btn-warning">
+                                    </div>
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="span4">
+                    	<div class="blog-widget">
+                        	<div class="sub-head">
+                                <span>Search</span>
+                            </div>
+                            <div class="search-box">
+                                <input type="text" id="Search" name="lastname" placeholder="Search Here">
+                            </div>
+                        </div>
+                        
+                        <div class="blog-widget">
+                        	<div class="sub-head">
+                                <span>Category</span>
+                            </div>
+                            <div class="category-list">
+                                <ul>
+                                    <li><a href="#">Photography</a></li>
+                                    <li><a href="#">Urban Art</a></li>
+                                    <li><a href="#">Web Design</a></li>
+                                    <li><a href="#">Contemporary</a></li>
+                                    <li><a href="#">Sculpture</a></li>
+                                    <li><a href="#">Inspiration</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-widget">
+                        	<div class="sub-head">
+                                <span>Archives</span>
+                            </div>
+                            <div class="category-list">
+                                <ul>
+                                    <li><a href="#">October 2012</a></li>
+                                    <li><a href="#">November 2012</a></li>
+                                    <li><a href="#">December 2012</a></li>
+                                    <li><a href="#">January 2013</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-widget">
+                        	<div class="sub-head">
+                                <span>Text Widget</span>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                        </div>
+                        
+                        <div class="blog-widget">
+                        	<div class="sub-head">
+                                <span>Latest Tweets</span>
+                            </div>
+                            <div class='tweet query'></div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Blog Content-->
+    
+    <!--Footer Content-->
+    <footer>
+        Copyright © 2013 by <a href="#">Alveera</a>. All rights reserved. 
+    </footer>
+    <!--Footer Content-->
+</body>
+</html>
