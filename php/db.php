@@ -1,7 +1,7 @@
 <?php
-$oci = oci_connect('wjones01', 'p0406890', 'pdc-amd01.poly.edu:1522/pdcamd');
-if (!$oci) {
-    $e = oci_error();
-    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+$mysqli = new mysqli("localhost", "root", "", "engineersinresidence");
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
 }
 ?>

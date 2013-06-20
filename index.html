@@ -1,12 +1,8 @@
-<!DOCTYPE html>
 <?php
-$mysqli = new mysqli("localhost", "root", "", "engineersinresidence");
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
-session_start();
+	require 'php/db.php';
+    session_start();
 ?>
+<!DOCTYPE html>
 <html><head>
     <meta charset="utf-8" />
     <title>Engineers in Residence</title>
@@ -43,30 +39,31 @@ session_start();
                             <li><a href="#about" class="menu">About Us</a></li>
                             <li><a href="#search" class="menu">Search</a></li>
                             <li><a href="#contact" class="menu">Contact Us</a></li>
-                            <?php 
-                            if(isset($_SESSION["user"])){
-                            	echo '<li><a id="logoutButton">Logout</a></li>';
+                            <?php
+                            	if(isset($_SESSION["user"])){
+                                	echo '<li><a href="dashboard.html">My Dashboard</a></li>
+                                    <li><a href="php/logout.php">Logout</a></li>';
                                 }
-                            else{
-                            echo '<li><a id="loginButton">Login</a></li>
-                                <div id="loginBox">                
-                                    <form id="loginForm" method="post" action="index.html">
-                                        <fieldset id="body">
-                                            <fieldset>
-                                                <label for="email">Email Address</label>
-                                                <input type="text" name="email" id="email">
+                                else{
+                                	echo '<li><a id="loginButton">Login</a></li>
+                                    <div id="loginBox">                
+                                        <form id="loginForm" method="POST" action="php/login.php">
+                                            <fieldset id="body">
+                                                <fieldset>
+                                                    <label for="email">Email Address</label>
+                                                    <input type="text" name="email" id="email">
+                                                </fieldset>
+                                                <fieldset>
+                                                    <label for="password">Password</label>
+                                                    <input type="password" name="password" id="password">
+                                                </fieldset>
+                                                <input type="submit" id="login" value="Sign in">
                                             </fieldset>
-                                            <fieldset>
-                                                <label for="password">Password</label>
-                                                <input type="password" name="password" id="password">
-                                            </fieldset>
-                                            <input type="submit" id="login" value="Sign in">
-                                            <label for="checkbox"><input type="checkbox" id="checkbox">Remember me</label>
-                                        </fieldset>
-                                        <span><a href="#">Forgot your password?</a></span>
-                                    </form>
-                                </div>';
-                                ?>
+                                            <span><a href="#">Forgot your password?</a></span>
+                                        </form>
+                                    </div>';
+                                }
+                           ?>
                         </ul>
                     </nav>
                 </div>
