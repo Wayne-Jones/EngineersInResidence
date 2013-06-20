@@ -380,7 +380,12 @@ header{
 	text-decoration:none;
 	cursor:pointer;
 }
-
+#logoutButton { 
+    position:relative;
+    z-index:30;
+	text-decoration:none;
+	cursor:pointer;
+}
 /* Login Button Text */
 #loginButton span {
     padding:7px 29px 9px 10px;

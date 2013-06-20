@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+$mysqli = new mysqli("localhost", "root", "", "engineersinresidence");
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
+session_start();
+?>
 <html><head>
     <meta charset="utf-8" />
     <title>Engineers in Residence</title>
@@ -35,9 +43,14 @@
                             <li><a href="#about" class="menu">About Us</a></li>
                             <li><a href="#search" class="menu">Search</a></li>
                             <li><a href="#contact" class="menu">Contact Us</a></li>
-                            <li><a id="loginButton">Login</a></li>
+                            <?php 
+                            if(isset($_SESSION["user"])){
+                            	echo '<li><a id="logoutButton">Logout</a></li>';
+                                }
+                            else{
+                            echo '<li><a id="loginButton">Login</a></li>
                                 <div id="loginBox">                
-                                    <form id="loginForm">
+                                    <form id="loginForm" method="post" action="index.html">
                                         <fieldset id="body">
                                             <fieldset>
                                                 <label for="email">Email Address</label>
@@ -52,7 +65,8 @@
                                         </fieldset>
                                         <span><a href="#">Forgot your password?</a></span>
                                     </form>
-                                </div>
+                                </div>';
+                                ?>
                         </ul>
                     </nav>
                 </div>
