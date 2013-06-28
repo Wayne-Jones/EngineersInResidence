@@ -2,8 +2,8 @@
 if(isset($_POST['email'])) {
      
     // EDIT THE 2 LINES BELOW AS REQUIRED
-    $email_to = "wej916@gmail.com";
-    $email_subject = "EIR Inquiry";
+    $email_to = "kuyan@poly.edu";
+    $email_subject = "Faculty EIR Inquiry";
      
      
      

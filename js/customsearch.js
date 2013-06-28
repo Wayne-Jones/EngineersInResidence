@@ -24,6 +24,13 @@ $(document).ready(function() {
 			$(this).addClass("loaded");
 		});
 	});
+	$('a.viewFacultyOverlay').live('click', function(){
+		
+		var facID = $(this).attr('rel');
+		$('#BioFac'+facID).fadeIn("fast",function(){
+			$(this).addClass("loaded");
+		});
+	});
 	
 	$('.closeButton').live('click', function(){
 		$(this).parent().parent().parent().removeClass("loaded").fadeOut('fast');

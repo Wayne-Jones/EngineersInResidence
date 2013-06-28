@@ -1,0 +1,290 @@
+<?php
+	require 'php/db.php';
+    session_start();
+?>
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8" />
+    <title>Engineers in Residence - Dashboard</title>
+    <!-- Main Style Sheet -->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+   
+    <!-- Favicons -->
+	<link rel="shortcut icon" href="images/icons/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icons/apple-touch-icon-114x114.png" />
+    
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+	<div id="ef-loader-overlay"></div>
+    <!--Header Start-->
+    <header>
+        <div class="container">
+        	<div class="row">
+                <div class="span3">
+                    <div id="logo">
+                    	<a href="#home" class="scrolltoanchor"><img src="images/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="span9 pos-relative">
+                    <nav id="sidemenu">
+                        <ul id="nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#addFaculty" class="menu">Add a Faculty Member</a></li>
+                            <li><a href="#addEIR" class="menu">Add an EIR</a></li>
+                            <li><a href="#update" class="menu">Update Information</a></li>
+                            <?php
+                            	if(isset($_SESSION["user"])){
+                                	echo '<li><a href="php/logout.php">Logout</a></li>';
+                                }
+                                else{
+                                	echo '<li><a id="loginButton">Login</a></li>
+                                    <div id="loginBox">                
+                                        <form id="loginForm" method="POST" action="php/login.php">
+                                            <fieldset id="body">
+                                                <fieldset>
+                                                    <label for="email">Email Address</label>
+                                                    <input type="text" name="email" id="email">
+                                                </fieldset>
+                                                <fieldset>
+                                                    <label for="password">Password</label>
+                                                    <input type="password" name="password" id="password">
+                                                </fieldset>
+                                                <input type="submit" id="login" value="Sign in">
+                                            </fieldset>
+                                            <span><a href="#">Forgot your password?</a></span>
+                                        </form>
+                                    </div>';
+                                }
+                           ?>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Header End-->
+    <!--Add a Faculty Member-->
+    <div class="content" id="addFaculty">
+        <div class="container">
+        	<div class="row">
+            	<div class="page-space">
+                   	<h1 class="heading"><span>Add a Faculty Member</span></h1>
+                    <div>&nbsp;</div>
+                    <?php
+                        if(isset($_SESSION['facultyInserted'])){
+                        	echo "<h1>Successfully Inserted</h1>";
+                            echo $_SESSION['facultyInserted'];
+                            //unset($_SESSION['facultyInserted']);
+                        }
+                        if(isset($_SESSION["fileError"]) && $_SESSION["fileError"]!=NULL){
+                            echo $_SESSION["fileError"]."<br>";
+                            unset($_SESSION["fileError"]);
+                        }
+                        if(isset($_SESSION["fileExists"]) && $_SESSION["fileExists"]!=NULL){
+                            echo $_SESSION["fileExists"]."<br>";
+                            unset($_SESSION["fileExists"]);
+                        }
+                        if(isset($_SESSION["invalidFile"]) && $_SESSION["invalidFile"]!=NULL){
+                            echo $_SESSION["invalidFile"]."<br>";
+                            unset($_SESSION["invalidFile"]);
+                        }
+                    ?>
+            		<div class="span12">
+                    	<div class="span2"></div>
+                        <form action="addFaculty.php" method="POST" enctype="multipart/form-data">
+                            <div class="span4">
+                                <input type="text" class="span4" id="name" name="name" placeholder="Name...">
+                            </div>
+                            <div class="span4">
+                                <input type="text" class="span4" id="company" name="company" placeholder="Company/Affliation...">
+                            </div>
+                            <div class="span2"></div>
+                            <div class="span4">
+                                <input type="text" class="span4" id="title" name="title" placeholder="Title...">
+                            </div>
+                            <div class="span4">
+                                <input type="text" class="span4" id="website" name="website" placeholder="Website...">
+                            </div>
+                            <div class="span2"></div>
+                            <div class="span8">
+                                <textarea class="span8" id="bio" name="bio" placeholder="Biography..."></textarea>
+                            </div>
+                            <div class="span2"></div>
+                            <div class="span8">
+                            	<div>&nbsp;</div>
+                                <textarea class="span8" id="keywords" name="keywords" placeholder="Separate individual keywords by a comma..."></textarea>
+                            </div>
+                            <div class="span2"></div>
+                            <div class="span8">
+                            	<div>&nbsp;</div>
+                                <input type="file" class="span4" id="file" name="file">
+                            </div>
+                            <div class="span2"></div>
+                            <div class="span8">
+                                <div>&nbsp;</div>
+                                <input type="submit" value="Submit" class="btn btn-warning">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="span12">
+                    	<div class="divider1">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+    <!--Add a Faculty End-->
+    <!--Add an EIR-->
+    <div class="content" id="addEIR">
+        <div class="container">
+        	<div class="row">
+            	<div class="page-space">
+                	<h1 class="heading"><span>Add an EIR</span></h1>
+                    <div>&nbsp;</div>
+            		<div class="span12">
+                    	<div class="span2"></div>
+                        <form action="addEIR.php" method="POST" enctype="multipart/form-data">
+                            <div class="span4">
+                                <input type="text" class="span4" id="name" name="name" placeholder="Name...">
+                            </div>
+                            <div class="span4">
+                                <input type="text" class="span4" id="company" name="company" placeholder="Company/Affliation...">
+                            </div>
+                            <div class="span2"></div>
+                            <div class="span4">
+                                <input type="text" class="span4" id="title" name="title" placeholder="Title...">
+                            </div>
+                            <div class="span4">
+                                <input type="text" class="span4" id="website" name="website" placeholder="Website...">
+                            </div>
+                            <div class="span2"></div>
+                            <div class="span8">
+                                <textarea class="span8" id="bio" name="bio" placeholder="Biography..."></textarea>
+                            </div>
+                            <div class="span2"></div>
+                            <div class="span8">
+                            	<div>&nbsp;</div>
+                                <textarea class="span8" id="keywords" name="keywords" placeholder="Separate individual keywords by a comma..."></textarea>
+                            </div>
+                            <div class="span2"></div>
+                            <div class="span8">
+                            	<div>&nbsp;</div>
+                                <input type="file" class="span4" id="file" name="file">
+                            </div>
+                            <div class="span2"></div>
+                            <div class="span8">
+                                <div>&nbsp;</div>
+                                <input type="submit" value="Submit" class="btn btn-warning">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="span12">
+                    	<div class="divider1">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+    <!--Add an EIR End-->
+    <!--Search Content-->
+    <div class="content" id="update">
+        <div class="container">
+        	<div class="row">
+            	<div class="page-space">
+            		<div class="span12">
+                		<h1 class="heading"><span>Update a profile</span></h1>
+                    	<h2 class="subheading"><span>Enter a the name of the person you want to update</span></h2>
+                    </div>
+                    <div class="span12">
+                    	<div class="divider1">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+    <!--Search Content-->
+    
+    <!--Footer Content-->
+    <footer>
+        Website Design by Wayne Jones. 
+    </footer>
+    <!--Footer Content-->
+    <!-- JQuery Plugin -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type='text/javascript' src='js/jquery.easing.1.3.js'></script>
+    <script type="text/javascript" src="js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="js/jquery.visualNav.min.js"></script>   
+    <script type="text/javascript" src="js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="js/responsiveslides.min.js"></script>    
+    <script type="text/javascript" src="js/jquery.scrollTo-min.js"></script>    
+    <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="js/mosaic-min.js"></script>
+    <script type="text/javascript" src="js/jquery.tweet.js"></script>
+    <script type="text/javascript" src="js/modernizr.js"></script>
+    <script type="text/javascript" src="js/isotope.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/additional-methods.js"></script>
+    <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+    
+    <!-- JQuery Custom Plugin -->
+    <script src="js/custom.js"></script>
+    <script src="js/login.js"></script>
+    <!-- <script src="js/search.js"></script> -->
+    <script src="js/customsearch.js"></script>
+    <script type="text/javascript">
+		
+		$(window).bind("load", function() {
+			$(document).ready(function () {
+				$('#ef-loader-overlay').fadeOut(800);			
+				
+				
+				$.fn.equalHeights = function(minHeight, maxHeight) {
+					tallest = (minHeight) ? minHeight : 0;
+					this.each(function() {
+						if($(this).height() > tallest) {
+							tallest = $(this).height();
+						}
+					});
+					if((maxHeight) && tallest > maxHeight) tallest = maxHeight;
+					return this.each(function() {
+						$(this).css({'height': tallest});
+					});
+				}
+		
+				// Set Icon Box Max Height //
+				//---------------------------------------------------------------- //
+				var ib_container = $('.gallery-outer');
+				ib_container.equalHeights();
+		
+				$(window).resize(function(){
+					ib_container.css('height','auto');
+					ib_container.equalHeights();
+				});
+				
+				var $container = $('#content');
+				$container.isotope({
+					filter: '*',
+					animationOptions: {
+						duration: 750,
+						easing: 'linear',
+						queue: false,
+					}
+				});
+				
+			});
+		});
+		$(window).load(function() {
+			
+			
+		});
+		
+	</script>
+</body>
+</html>
