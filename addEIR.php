@@ -2,6 +2,11 @@
 require "php/db.php";
 session_start();
 
+if(!isset($_SESSION['user'])){
+	header("Location: dashboard.html");
+	exit();
+}
+
 $name = $_POST['name'];
 $company = $_POST['company'];
 $title = $_POST['title'];
@@ -69,7 +74,7 @@ $bio = $_POST['bio'];
 				$stmt->close();
 			}
 		}
-		$EIRInsert=$name." has been inserted into the database";
+		$EIRInserted=$name." has been inserted into the database";
 		$_SESSION["EIRInserted"]=$EIRInserted;
 		header("Location: dashboard.html");
 		exit();
