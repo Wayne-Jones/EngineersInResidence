@@ -40,7 +40,6 @@
                             	if(isset($_SESSION["user"])){
                                 	echo '<li><a href="#addFaculty" class="menu">Add a Faculty Member</a></li>
                             		<li><a href="#addEIR" class="menu">Add an EIR</a></li>
-                            		<li><a href="#update" class="menu">Update Information</a></li>
                                     <li><a href="php/logout.php">Logout</a></li>';
                                 }
                                 else{
@@ -82,11 +81,11 @@
                     <center>';
                         if(isset($_SESSION['facultyInserted'])){
                         	echo $_SESSION['facultyInserted']."<br/><br/>";
-                            //unset($_SESSION['facultyInserted']);
+                            unset($_SESSION['facultyInserted']);
                         }
                         if(isset($_SESSION['EIRInserted'])){
                         	echo $_SESSION['EIRInserted']."<br/><br/>";
-                            //unset($_SESSION['EIRInserted']);
+                            unset($_SESSION['EIRInserted']);
                         }
                         if(isset($_SESSION['fileError'])){
                             echo $_SESSION['fileError']."<br/><br/>";
@@ -129,6 +128,7 @@
                             <div class="span2"></div>
                             <div class="span8">
                             	<div>&nbsp;</div>
+                                <p>Files must be a PNG/JPG/GIF file that is less than 
                                 <input type="file" class="span4" id="file" name="file">
                             </div>
                             <div class="span2"></div>
@@ -197,24 +197,7 @@
             </div>
         </div>
      </div>
-    <!--Add an EIR End-->
-    <!--Update EIR Content-->
-    <div class="content" id="update">
-        <div class="container">
-        	<div class="row">
-            	<div class="page-space">
-            		<div class="span12">
-                		<h1 class="heading"><span>Update a profile</span></h1>
-                    	<h2 class="subheading"><span>Enter a the name of the person you want to update</span></h2>
-                    </div>
-                    <div class="span12">
-                    	<div class="divider1">&nbsp;</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-     </div>
-    <!--Update End-->';}
+    <!--Add an EIR End-->';}
     else{
     echo'<!--User Not Logged In-->
     <div class="content" id="addEIR">

@@ -1,5 +1,6 @@
 //AJAX Call to a PHP File to query a database and return results
 var ajax_url = 'php/ajax_handler.php';
+var faculty_ajax_url = 'php/faculty_ajax_handler.php';
 var ajax_overlay = 'php/ajax_overlay.php';
 
 
@@ -13,6 +14,9 @@ $(document).ready(function() {
 	var value = $('#searchResidents').val();
 	$.post(ajax_url,{value:value}, function(data){
 		$("#peopleThumbs").html(data);
+		});
+	$.post(faculty_ajax_url,{value:value}, function(data){
+		$("#facultyThumbs").html(data);
 		});
 		return false;
 	});
@@ -48,6 +52,9 @@ function loadResidents(){
 	var value = $('#searchResidents').val();
 	$.post(ajax_url,{value:value}, function(data){
 		$("#peopleThumbs").html(data);
+		});
+	$.post(faculty_ajax_url,{value:value}, function(data){
+		$("#facultyThumbs").html(data);
 		});
 }
 function loadOverlay(){

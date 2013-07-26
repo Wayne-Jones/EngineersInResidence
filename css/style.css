@@ -22,7 +22,7 @@
 }
 body {
 	background:url(../images/body-bg.png) repeat;
-	font: 15px/21px 'sansus_webissimoregular', sans-serif , "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font: 15px/21px 'HelveticaNeueLTCom45Light', Arial, sans-serif;
 	color: #888888;
 	margin:0;
 	line-height:inherit;
@@ -51,8 +51,8 @@ form{
    Typography
 ======================================================== */
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'geared_slabregular', "Georgia", "Times New Roman", serif;
-	font-weight: normal; }
+	font-family: 'HelveticaNeueLTCom45Light', sans-serif;
+	font-weight: bold; }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
 h1 { font-size: 26px; line-height: 28px; margin-bottom: 14px;}
 h2 { font-size: 20px; line-height: 24px; margin-bottom: 10px; }
@@ -142,7 +142,7 @@ header{
 .sub-head{
 	background:url(../images/heading_bg2.png) repeat-x center 12px;
 	font-size:20px;
-	font-family:'geared_slabregular';
+	font-family:'HelveticaNeueLTCom45Light';
 	color:#2b2b2d;
 	margin-bottom:20px;
 }
@@ -154,17 +154,18 @@ header{
 	padding:0 0 40px 0;
 }
 .short-intro{
-	text-align:center;
-	padding:0 0 15px 0;
-	margin-bottom:25px;
+	text-align:left;
+	padding:30px 0 30px 0;
+	margin-bottom:100px;
 	background:url(../images/line_bg.png) repeat-x left bottom;
+	font-size:16px;
 }
 /* ========================================================
    Search
 ======================================================== */
 .searchBar{
 	overflow: hidden;
-	padding: 13px 20px 15px 20px;
+	padding: 13px 20px 10px 20px;
 	background-color: #F8F8F5;
 	margin-top: 42px;	
 }
@@ -178,7 +179,7 @@ header{
 	padding-left: 15px;
 	font-size: 32px;
 	font-weight: 100;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'HelveticaNeueLTCom45Light', Arial, sans-serif;
 	line-height: 48px;
 	outline: none;
 }
@@ -199,10 +200,17 @@ header{
 	margin-top:30px;
 	margin-left:60px;
 	width:100%;
-	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-family:"HelveticaNeueLTCom45Light", Arial, sans-serif;
+}
+#facultyThumbs{
+	overflow:hidden;
+	margin-top:30px;
+	margin-left:20px;
+	width:100%;
+	font-family:"HelveticaNeueLTCom45Light", Arial, sans-serif;
 }
 
-#peopleThumbs a{
+#peopleThumbs a, #facultyThumbs a{
 	text-decoration:none;
 }
 
@@ -210,24 +218,34 @@ header{
 	width:180px;
 	height:330px;
 	float:left;
-	margin:0 32px 30px 0;
+	margin:0 40px 30px 0;
 	position:relative;
 	border-bottom:1px solid #D1D1D1;
 	z-index:50;
 }
 
-#peopleThumbs span a.viewOverlay{
+#facultyThumbs span.facultysection, .facultysection{
+	width:100px;
+	height:180px;
+	float:left;
+	margin:0 15px 30px 0;
+	position:relative;
+	border-bottom:1px solid #D1D1D1;
+	z-index:50;
+}
+
+#peopleThumbs span a.viewOverlay, #facultyThumbs span a.viewFacultyOverlay{
 	display:block;
 	height:100%;
 	outline:none;
 }
 
-#peopleThumbs span img{
+#peopleThumbs span img, #facultyThumbs span img{
 	margin-bottom:7px;
 	border-bottom:8px solid #D5D5D5;
 }
 
-#peopleThumbs span:hover img{
+#peopleThumbs span:hover img, #facultyThumbs span:hover img{
 	border-bottom:8px solid #ff6644;
 }
 
@@ -242,7 +260,18 @@ header{
 	margin-top:4px;
 }
 
-#peopleThumbs span:hover h1{
+#facultyThumbs span h1, .peopleh1{
+	font-weight:bold;
+	font-size:14px;
+	color:#222222;
+	text-transform:uppercase;
+	line-height:17px;
+	letter-spacing:.04em;
+	margin-left:2px;
+	margin-top:4px;
+}
+
+#peopleThumbs span:hover h1, #facultyThumbs span:hover h1{
 	color:#ff6644;
 }
 
@@ -265,7 +294,7 @@ header{
 	margin-top:8px;
 }
 
-#peopleThumbs span.peoplesection span.viewBio{
+#peopleThumbs span.peoplesection span.viewBio, #facultyThumbs span.facultysection span.viewBio{
 	display:block;
 	position:absolute;
 	bottom:12px;
@@ -277,7 +306,7 @@ header{
 	text-decoration:none;
 }
 
-#peopleThumbs span.peoplesection span.viewBio:hover{
+#peopleThumbs span.peoplesection span.viewBio:hover, #facultyThumbs span.facultysection span.viewBio:hover{
 	background-position:right -881px;
 }
 
@@ -297,8 +326,8 @@ header{
 }
 #overlayContainer span div.overlayInner {
 	background:#FFF;
-	width:563px;
-	height:auto;
+	width:550px;
+	max-height:600px;
 	padding:21px 0 0 36px;
 	-webkit-box-shadow: 5px 5px 10px #222222;
 	box-shadow: 5px 5px 10px #222222;
@@ -529,6 +558,7 @@ input:focus {
 .intro-txt{
 	padding:30px 0;
 	text-align:center;
+	font-size: 18px;
 }
 .home-btn{
 	text-align:center;
@@ -912,7 +942,7 @@ a.portfolio-btn span, a.contact-btn span{
 	line-height:24px;
 }
 .office-info strong{
-	font-family:'geared_slabregular';
+	font-family:'HelveticaNeueLTCom45Light';
 	color:#2b2b2d;
 }
 .icon-wrap{

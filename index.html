@@ -1,3 +1,4 @@
+
 <?php
 	require 'php/db.php';
     session_start();
@@ -36,8 +37,8 @@
                     <nav id="sidemenu">
                         <ul id="nav">
                             <li><a href="#home" class="menu">Home</a></li>
+                            <li><a href="#search" class="menu">Search For Engineers</a></li>
                             <li><a href="#about" class="menu">About Us</a></li>
-                            <li><a href="#search" class="menu">Search</a></li>
                             <li><a href="#contact" class="menu">Contact Us</a></li>
                             <?php
                             	if(isset($_SESSION["user"])){
@@ -100,67 +101,6 @@
     </div>
     <!--Home Content-->
     
-    <!--About Content-->
-    <div class="content" id="about">
-        <div class="container">
-        	<div class="row">
-            	<div class="page-space">
-            		<div class="span12">
-                		<h1 class="heading"><span>About Us</span></h1>
-                    	<h2 class="subheading"><span>Learn a little bit more about us!</span></h2>                    
-                        <div class="short-intro">
-                            <p>NYU-Poly's Faculty Engineers in Residence (EIR) are faculty members who bring their entrepreneurial experience to teaching and research. The Faculty EIR will work to:<br /><br />
-                            Advise students on how to promote the values of i2e, and act as mentors to young participants at the incubators.<br />
-                            Assist resident companies at the incubators where there is affinity with the fellow's academic work or entrepeneurial experience.<br />
-                            Offer periodic lectures at the incubators abour their own entrepeneurial experiences.<br />
-                            Invite colleagues and visitors to the inclubators for lectures and discussion.<br />
-                            Give feedback on activities of the student entrepeneurship club (EIA).<br />
-                            Serve as mentors to student teams involved in NYU's student entrepeneur competitions and help find appropriate faculty mentors for the various Poly teams.<br /><br />
-                            Wayne Jones is a senior Computer Science student from NYU Poly. His love for web development and database management went beyond that of the college classroom. The Engineers in Residence (EIR) website was inspired by an idea that Steve Kuyan came up with while working at the Varick Street Incubator.</p>
-                        </div>
-                    </div>
-                    <div class="span4">
-                        <div class="team-wrap">
-                        	<div class="team-img">
-                            	<p><img src="images/10d9c89.jpg" alt="" /></p>
-                                <div class="social-icons">
-                                	<ul>
-                                        <li><a href="https://twitter.com/NamixKuro" class="twitter tipsy" title="Twitter">Twitter</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="team-txt">
-                            	<h3>Wayne Jones <span>Web Developer</span></h3>
-                                <p>Wayne Jones is a Web Developer and is currently attending NYU Poly. He will recieve his bachelors degree in Computer Science in May 2013.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="span4">
-                        <div class="team-wrap">
-                        	<div class="team-img">
-                            	<p><img src="images/09319b1.jpg" alt="" /></p>
-                                <div class="social-icons">
-                                	<ul>
-                                        <li><a href="https://twitter.com/stevenkuyan" class="twitter tipsy" title="Twitter">Twitter</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="team-txt">
-                            	<h3>Steve Kuyan <span>Advisor</span></h3>
-                                <p>Steve Kuyan is the Assistant Director of the NYU Poly Incubators. He graduated NYU Poly in 2011 with a Masters Degree in Business and Technology Management.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="span12">
-                    	<div class="divider1">&nbsp;</div>
-                    </div>
-                </div>                
-            </div>
-        </div>
-    </div>
-    <!--About Content-->
-    
     <!--Search Content-->
     <div class="content" id="search">
         <div class="container">
@@ -175,14 +115,42 @@
                             <input type="submit" id="searchSubmit" name="searchSubmit" value="search">
                         </div>
                         </form>
+                        <h1 style="text-align:center; text-decoration:underline">Faculty Engineers in Residence</h1>
                         <section id="peopleThumbs"></section>
+                        <h1 style="text-align:center; text-decoration:underline">NYU Poly Faculty</h1>
+                        <section id="facultyThumbs"></section>
                         <section id="overlayContainer"></section>
+                        <div class="divider1"></div>
                     </div>
                 </div>
             </div>
         </div>
      </div>
     <!--Search Content-->
+    
+    <!--About Content-->
+    <div class="content" id="about">
+        <div class="container">
+        	<div class="row">
+            	<div class="page-space">
+            		<div class="span12">
+                		<h1 class="heading"><span>About Us</span></h1>                   
+                        <div class="short-intro">
+                            <p>NYU-Poly's Faculty Engineers in Residence (EIR) are faculty members who bring their entrepreneurial experience to teaching and research. The Faculty EIR will work to:<br /><br />
+                            <ul>
+                            <li>Advise students on how to promote the values of i2e, and act as mentors to young participants at the incubators.<br /></li>
+                            <li>Assist resident companies at the incubators where there is affinity with the fellow's academic work or entrepeneurial experience.<br /></li>
+                            <li>Offer periodic lectures at the incubators abour their own entrepeneurial experiences.<br /></li>
+                            <li>Invite colleagues and visitors to the inclubators for lectures and discussion.<br /></li>
+                            <li>Give feedback on activities of the student entrepeneurship club (EIA).<br /></li>
+                            <li>Serve as mentors to student teams involved in NYU's student entrepeneur competitions and help find appropriate faculty mentors for the various Poly teams.<br /></li></p>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <!--About Content-->
 
     <!--Contact Content-->
     <div class="content" id="contact">
@@ -196,7 +164,7 @@
                     
                     <div class="span12">
                         <div class="port-outer">
-                        <iframe width="100%" height="310" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=137+Varick+Street,+New+York,+NY&amp;aq=0&amp;oq=137+Varick+Stret&amp;sll=40.697488,-73.979681&amp;sspn=0.658026,1.454315&amp;ie=UTF8&amp;hq=&amp;hnear=137+Varick+St,+New+York,+10013&amp;ll=40.72582,-74.005966&amp;spn=0.010277,0.022724&amp;t=m&amp;z=14&amp;iwloc=A&amp;output=embed" class="map"></iframe>
+                        <iframe width="100%" height="310" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=137+Varick+Street,+New+York,+NY&amp;aq=0&amp;oq=137+Varick&amp;sll=40.697488,-73.979681&amp;sspn=1.405564,2.90863&amp;ie=UTF8&amp;hq=&amp;hnear=137+Varick+St,+New+York,+10013&amp;t=m&amp;ll=40.732755,-73.9779&amp;spn=0.020162,0.082397&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=137+Varick+Street,+New+York,+NY&amp;aq=0&amp;oq=137+Varick&amp;sll=40.697488,-73.979681&amp;sspn=1.405564,2.90863&amp;ie=UTF8&amp;hq=&amp;hnear=137+Varick+St,+New+York,+10013&amp;t=m&amp;ll=40.732755,-73.9779&amp;spn=0.020162,0.082397&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
                         </div>
                         <div>&nbsp;</div>
                     </div>
@@ -211,19 +179,19 @@
                             </div>
                             <form id="contact_form" method="post" action="#" >
                                 <div class="span4">
-                                    <input type="text" class="span4" id="name" name="name" placeholder="First Name...">
+                                    <input type="text" class="span4" id="name" name="name" placeholder="First Name">
                                 </div>
                                 <div class="span4">
-                                    <input type="text" class="span4" id="lastname" name="lastname" placeholder="Last Name...">
+                                    <input type="text" class="span4" id="lastname" name="lastname" placeholder="Last Name">
                                 </div>
                                 <div class="span4">
-                                    <input type="text" class="span4" id="email" placeholder="Email..." name="email">
+                                    <input type="text" class="span4" id="email" placeholder="Email" name="email">
                                 </div>
                                 <div class="span4">
-                                    <input type="text" class="span4" id="phone" placeholder="Phone Number..." name="phone">
+                                    <input type="text" class="span4" id="phone" placeholder="Phone Number" name="phone">
                                 </div>
                                 <div class="span8">
-                                    <textarea class="span8" id="comment" placeholder="Your comments..." name="comment"></textarea>
+                                    <textarea class="span8" id="comment" placeholder="Your comments" name="comment"></textarea>
                                 </div>
                                 <div class="span8">
                                     <div>&nbsp;</div>
@@ -235,7 +203,7 @@
                     
                     <div class="span4">
                         <div class="sub-head">
-                            <span>Office Address</span>
+                            <span>Contact Information</span>
                         </div>
                         <div class="office-info">
                             <div class="icon-wrap">

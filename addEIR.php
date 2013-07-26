@@ -1,5 +1,6 @@
 <?php
 require "php/db.php";
+require "php/WideImage/lib/wideimage.php";
 session_start();
 
 if(!isset($_SESSION['user'])){
@@ -13,8 +14,43 @@ $title = $_POST['title'];
 $website = $_POST['website'];
 $keywords = $_POST['keywords'];
 $bio = $_POST['bio'];
-
-//Upload Image File Script
+if(!is_uploaded_file($_FILES["file"]['tmp_name'])){
+	//No File has been submitted, Insert default image as profile pic
+	$imgPath = "images/bioPics/default_avatar.png";
+	//Insert EIR Info into the database
+	if($stmt = $mysqli->prepare("INSERT INTO engineers(name, company, title, bio, website, imgURL) VALUES (?, ?, ?, ?, ?, ?)")){
+		$stmt->bind_param("ssssss", $name, $company, $title, $bio, $website, $imgPath);
+		$stmt->execute();
+		$stmt->close();
+	}
+	$engID="";
+	//Fetch the eng_id that you have entered
+	if($stmt = $mysqli->prepare("SELECT eng_id FROM engineers WHERE name = ? AND company = ? AND title = ?")){
+		$stmt->bind_param("sss", $name, $company, $title); //Reduces the chance of two people having the same name but different IDs, safety measures
+		$stmt->execute();
+		$stmt->bind_result($engID);
+		$stmt->fetch();
+		$stmt->close();
+	}
+	//Insert keywords and attach it to that eng_id
+	$keywordArr = explode(",", $keywords);
+	for($i=0; $i<count($keywordArr); $i++){
+		$keywordArr[$i]=trim($keywordArr[$i]);
+	}
+	foreach($keywordArr as $key => $keyword){
+		if($stmt = $mysqli->prepare("INSERT INTO keywords(eng_id, Name, keyword) VALUES (?, ?, ?)")){
+			$stmt->bind_param("iss", $engID, $name, $keyword);
+			$stmt->execute();
+			$stmt->close();
+		}
+	}
+	$EIRInserted=$name." has been inserted into the database";
+	$_SESSION["EIRInserted"]=$EIRInserted;
+	header("Location: dashboard.html");
+	exit();
+}
+else{
+	//Upload Image File Script
 	$allowedExts = array("gif", "jpeg", "jpg", "png");
 	$tmp = explode(".", $_FILES["file"]["name"]);
 	$extension = end($tmp);
@@ -43,8 +79,11 @@ $bio = $_POST['bio'];
 			}
 			else
 			{
+				$img = WideImage::loadFromUpload('file');
+				$croppedImg = $img->crop("center", "center", 200, 200);
+				$croppedImg->saveToFile($imgPath);
 				//Move the temp file and save it to the server
-				move_uploaded_file($_FILES["file"]["tmp_name"], $imgPath);
+				//move_uploaded_file($_FILES["file"]["tmp_name"], $imgPath);
 			}
 		}
 		//Insert EIR Info into the database
@@ -86,4 +125,5 @@ $bio = $_POST['bio'];
 		header("Location: dashboard.html");
 		exit();
 	}
+}
 ?>
